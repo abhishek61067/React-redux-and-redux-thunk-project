@@ -1,10 +1,11 @@
-import { configureStore } from "@reduxjs/toolkit";
 import buyCakeReducer from "./cake/cakeReducer";
+import buyIceCreamReducer from "./ice-cream/iceCreamReducer";
+import { configureStore } from "@reduxjs/toolkit";
 import logger from "redux-logger";
 
 const store = configureStore({
-  reducer: buyCakeReducer,
-  middleware: (getDefaultMiddleware) => {
+  reducer: { cake: buyCakeReducer, iceCream: buyIceCreamReducer },
+  middleware: () => {
     return [logger];
   },
 });
