@@ -17,19 +17,21 @@ const UsersContainer = (props) => {
           <p>Loading...</p>
         ) : props.users.error ? (
           <p>{props.users.error}</p>
-        ) : props.users.data?.length < 0 ? (
+        ) : props.users.users.data?.length < 0 ? (
           <p>Data empty</p>
         ) : (
-          props.users.data?.map((user) => <p>{user.name}</p>)
+          props.users.users.data?.map((user) => <p>{user.name}</p>)
         )}
       </div>
     </div>
   );
 };
 
+// the state argument of mapStateToProps is returned by the createStore function which
+// equals the argument passed in reducer property of createStore
 const mapStateToProps = (state) => {
   console.log("state from mapStateToProps: ", state);
-  return { users: state.users.users };
+  return { users: state.users };
 };
 
 const mapDispatchToProps = (dispatch) => {
